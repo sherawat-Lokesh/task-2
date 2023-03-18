@@ -1,11 +1,13 @@
 "use strict "
 
 const body=document.querySelector('body')
+const container=document.createElement('div')
+body.appendChild(container)
 const div1=document.createElement('div')
 div1.classList.add('section-1')
-body.appendChild(div1)
-
-const labelsArr = ['Name','Age','Gender','Occupation','Salary','Contact No.'];
+container.appendChild(div1)
+container.classList.add('container')
+const labelsArr = [{name:'Name',type:'text',placeholder:'Enter your name..'},{name:'Age',type:'number',placeholder:'Your age..'},{name:'Gender',type:'text',placeholder:'Male or Female'},{name:'Occupation',type:'text',placeholder:''},{name:'Salary',type:'number',placeholder:'Salary amount'},{name:'Contact No.',type:'number',placeholder:'Enter your Mobile No.'}];
 const labelArrLength = labelsArr.length;
 
 
@@ -14,13 +16,15 @@ labelsArr.forEach((val,i)=>{
 
     const labels = document.createElement('label');
     labels.classList.add('label');
-    labels.innerText =`${val}`;
+    labels.innerText =`${val.name}`;
 
     const inputField = document.createElement('input');
-    inputField.type='text';
+    inputField.type=`${val.type}`;
+
     inputField.classList.add(`input`);
     inputField.classList.add(`input${i}`);
     inputField.setAttribute('required','')
+    inputField.setAttribute('placeholder',`${val.placeholder}`)
 
 
     div1.insertAdjacentElement('beforeend',labels);
@@ -31,7 +35,7 @@ const submitBtn = document.createElement('button');
 submitBtn.innerText ='SUBMIT';
 submitBtn.classList.add('btn');
 
-div1.insertAdjacentElement('afterend',submitBtn)
+div1.insertAdjacentElement('beforeend',submitBtn)
 
 
 
@@ -57,7 +61,7 @@ document.querySelector('.btn').addEventListener('click',()=>{
             ,age:`${ in1.value}`
             ,gender: `${in2.value}`
             ,occupation:`${in3.value}`
-            ,salary:`₹ ${in4.value}`
+            ,salary:`${in4.value}`
             ,contactNo:`${in5.value}`
         }
         a.push(obj)
@@ -78,3 +82,37 @@ window.onload=()=>{
 }
 
 
+const div2=document.createElement('div')
+div2.classList.add('tables-sec')
+container.insertAdjacentElement('beforeend',div2)
+function runWhenCalled(){
+    div2.innerHTML=''
+    const table=document.createElement('table');
+    const thead=document.createElement('thead');
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        labelsArr.forEach((val)=>{
+                const th=document.createElement('th');
+                th.innerText = `${val.name}`
+                thead.insertAdjacentElement('beforeend',th)
+                table.insertAdjacentElement('beforeend',thead)
+            });
+
+    
+        b=JSON.parse(localStorage.getItem('keyData'));
+            if(b==null)return
+                b.forEach((val)=>{
+                    const header=document.createElement('tr')
+                    Object.values(val).forEach(run=>{
+                        const tdata=document.createElement('td');
+                        tdata.innerText=`${run}`
+                        header.appendChild(tdata)
+                    })
+                    
+                table.insertAdjacentElement('beforeend',header);
+                div2.insertAdjacentElement('afterbegin',table);
+
+            })
+}
+
+runWhenCalled()
