@@ -72,14 +72,6 @@ document.querySelector('.btn').addEventListener('click',()=>{
 })
 
 
-window.onload=()=>{
-
-    const local= JSON.parse(localStorage.getItem('keyData'))
-    if(local !==null){
-        a=local
-    }
-    
-}
 
 
 const div2=document.createElement('div')
@@ -116,3 +108,19 @@ function runWhenCalled(){
 }
 
 runWhenCalled()
+
+
+window.onload=()=>{
+
+    const local= JSON.parse(localStorage.getItem('keyData'))
+    if(local !==null){
+        a=local
+    }else if(local == null){
+    const heading=    document.createElement('h2')
+        heading.innerText=`Data is not available`
+        
+        div2.appendChild( heading)
+    }
+
+    
+}
