@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: fit-content;
+
+}
+
+:root{
+
+}
+
+
+.section-1{
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+label{
+    margin-top: 1rem;
+
+}
+input{
+    width: 20rem;
+    height: 2rem;
+}
+table{
+    display: block;
+    text-align: center;
+}
+th,td{
+    border: 1px solid black;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    width: 10rem;
+
+}
+td{
+}
