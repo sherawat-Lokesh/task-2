@@ -27,7 +27,7 @@ labelsArr.forEach((val,i)=>{
 });
 
 const submitBtn = document.createElement('button');
-submitBtn.innerText ='submit';
+submitBtn.innerText ='SUBMIT';
 submitBtn.classList.add('btn');
 
 div1.insertAdjacentElement('afterend',submitBtn)
@@ -45,7 +45,7 @@ const in5   =    document.querySelector('.input5')
 let a =[]
 
 document.querySelector('.btn').addEventListener('click',()=>{
-    if(in0.value !=='' && in1.value !==''  && in3.value !==''  && in5.value !==''){
+    if(in0.value =='' && in1.value ==''  && in5.value =='')return;
 
         const obj={
             name:`${ in0.value}`
@@ -55,16 +55,21 @@ document.querySelector('.btn').addEventListener('click',()=>{
             ,salary:`${in4.value}`
             ,contactNo:`${in5.value}`
         }
+        console.log(a)
         a.push(obj)
         localStorage.setItem('keyData',JSON.stringify(a))
         runWhenCalled()
-    }
+    
 
 })
 
 
 window.onload=()=>{
-    a= JSON.parse(localStorage.getItem('keyData'))
+
+    let local= JSON.parse(localStorage.getItem('keyData'))
+    if(local !==null){
+        a=local
+    }
     
 }
 
