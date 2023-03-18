@@ -17,7 +17,7 @@ labelsArr.forEach((val,i)=>{
     labels.innerText =`${val}`;
 
     const inputField = document.createElement('input');
-    inputField.type ='text';
+    inputField.type='text';
     inputField.classList.add(`input`);
     inputField.classList.add(`input${i}`);
     inputField.setAttribute('required','')
@@ -42,6 +42,10 @@ const in2   =    document.querySelector('.input2')
 const in3   =    document.querySelector('.input3')
 const in4   =    document.querySelector('.input4')
 const in5   =    document.querySelector('.input5')
+in4.type='number'
+in1.type='number'
+in5.type='number'
+
 
 let a =[]
 
@@ -53,13 +57,12 @@ document.querySelector('.btn').addEventListener('click',()=>{
             ,age:`${ in1.value}`
             ,gender: `${in2.value}`
             ,occupation:`${in3.value}`
-            ,salary:`${in4.value}`
+            ,salary:`₹ ${in4.value}`
             ,contactNo:`${in5.value}`
         }
-        console.log(a)
         a.push(obj)
         localStorage.setItem('keyData',JSON.stringify(a))
-runWhenCalled()
+        runWhenCalled()
         document.querySelectorAll('input').forEach(val=>val.value='')
 
 })
