@@ -4,6 +4,7 @@ const body=document.querySelector('body')
 const div1=document.createElement('div')
 div1.classList.add('section-1')
 body.appendChild(div1)
+
 const labelsArr = ['Name','Age','Gender','Occupation','Salary','Contact No.'];
 const labelArrLength = labelsArr.length;
 
@@ -58,15 +59,15 @@ document.querySelector('.btn').addEventListener('click',()=>{
         console.log(a)
         a.push(obj)
         localStorage.setItem('keyData',JSON.stringify(a))
-        runWhenCalled()
-    
+runWhenCalled()
+        document.querySelectorAll('input').forEach(val=>val.value='')
 
 })
 
 
 window.onload=()=>{
 
-    let local= JSON.parse(localStorage.getItem('keyData'))
+    const local= JSON.parse(localStorage.getItem('keyData'))
     if(local !==null){
         a=local
     }

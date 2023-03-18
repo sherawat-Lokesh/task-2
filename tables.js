@@ -1,18 +1,22 @@
+const div2=document.createElement('div')
+div2.classList.add('tables-sec')
+submitBtn.insertAdjacentElement('afterend',div2)
+function runWhenCalled(){
+div2.innerHTML=''
 const table=document.createElement('table');
-const tr=document.createElement('tr');
+const thead=document.createElement('thead');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 labelsArr.forEach((val)=>{
         const th=document.createElement('th');
         th.innerText = `${val}`
-        tr.insertAdjacentElement('beforeend',th)
-        table.insertAdjacentElement('beforeend',tr)
-        submitBtn.insertAdjacentElement('afterend',table);
+        thead.insertAdjacentElement('beforeend',th)
+        table.insertAdjacentElement('beforeend',thead)
     });
 
-function runWhenCalled(){
-
-    b=JSON.parse(localStorage.getItem('keyData'))
+    
+    b=JSON.parse(localStorage.getItem('keyData'));
+    if(b==null)return
         b.forEach((val)=>{
             const header=document.createElement('tr')
             Object.values(val).forEach(run=>{
@@ -20,9 +24,11 @@ function runWhenCalled(){
                 tdata.innerText=`${run}`
                 header.appendChild(tdata)
             })
+            
             table.insertAdjacentElement('beforeend',header)
+        div2.insertAdjacentElement('afterbegin',table);
 
-    })
+        })
 }
 
 runWhenCalled()
